@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM y JavaScript</title>
+    <style>
+        #caja {
+            border: 3px solid blue;
+            padding: 20px;
+            width: 300px;
+        }
+    </style>
+    <script>
+        function cambiaTitulo() {
+            let titulo = document.getElementById("titulo");
+
+            if(titulo.innerHTML == "Título inicial") {
+                titulo.innerHTML = "Nuevo título";
+            }
+            else {
+                titulo.innerHTML = "Título inicial";
+            }
+
+            document.getElementById("caja").innerHTML = "Nuevo contenido caja";   
+        }
+
+        function cambiarAnchoImagen() {
+            let imagen = document.getElementById("imagen");
+
+            imagen.width += 100;
+        }
+
+        function cambiarImagen() {
+            document.getElementById("imagen").src = "images/perros.jpg";
+        }
+        
+        function cambiarCaja() {
+            let caja = document.getElementById("caja");
+            caja.style.width = "500px";
+            caja.style.backgroundColor = "lightgreen";
+            caja.style.fontSize = "50px";
+            caja.style.color = "red";
+        }
+    </script>
+</head>
+<body>
+    <h1 id="titulo">Título inicial</h1>
+    <div id="caja">Contenido caja</div>
+    <img id="imagen" src="images/gatos.jpg" alt="" width="300" height="200">
+    <br>
+    <button onclick="cambiaTitulo()">Cambiar título</button>
+    <br>
+    <button onclick="cambiarAnchoImagen()">Cambiar ancho imagen</button>
+    <br>
+    <button onclick="cambiarImagen()">Cambiar imagen</button>
+    <br>
+    <button onclick="cambiarCaja()">Cambiar caja</button>
+</body>
+</html>

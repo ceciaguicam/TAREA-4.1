@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM y JavaScript</title>
+    <style>
+        #caja {
+            border: 3px solid blue;
+        }
+    </style>
+    <script>
+        function cambiaTitulo() {
+            let titulo = document.getElementById("titulo");
+
+            if(titulo.innerHTML == "Título inicial") {
+                titulo.innerHTML = "Nuevo título";
+            }
+            else {
+                titulo.innerHTML = "Título inicial";
+            }
+
+            document.getElementById("caja").innerHTML = "Nuevo contenido caja";
+                
+        }
+    </script>
+</head>
+<body>
+    <h1 id="titulo">Título inicial</h1>
+    <div id="caja">Contenido caja</div>
+    <button onclick="cambiaTitulo()">Cambiar título</button>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primer ejercicio con JavaScript</title>   
+</head>
+<body>
+    <h1>Página con JavaScript</h1>
+
+    <script>
+        //Pide un nombre por pantalla
+        var nombre = prompt("Dime tu nombre");
+
+        //Variables
+        let x = 5;
+        let y = 6;
+        let z = x + y;
+
+        alert("z = " + z);
+
+        let edad = prompt("Dime tu edad");
+        let mensaje = "";
+
+        if (edad < 18) {
+            mensaje = "No puedes acceder a esta página";
+        } else {
+            mensaje = "Hola " + nombre + ". Bienvenid@ a mi página";
+        }
+
+        alert(mensaje);
+    </script>
+</body>
+</html>

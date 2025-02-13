@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selector de provincias</title>
+    <script>
+        function cambiarImagen() {
+            let provincia = document.getElementById('provincia').value;
+            let imagen = document.getElementById('imagen');
+            imagen.style.visibility = 'visible';
+
+            if(provincia == "cr") {
+                imagen.src = 'images/ciudad-real.png';
+            } else if(provincia == "to") {
+                imagen.src = 'images/toledo.png';
+            } else if(provincia == "ab") {
+                imagen.src = 'images/albacete.png';
+            } else if(provincia == "cu") {
+                imagen.src = 'images/cuenca.jpg';
+            } else if(provincia == "gu") {
+                imagen.src = 'images/guadalajara.png';
+            } else {
+                imagen.src = '';
+                imagen.style.visibility = 'hidden';
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Castilla-La Mancha</h1>
+    <form action="">
+        <label for="provincia">Provincia</label>
+        <select name="provincia" id="provincia" onchange="cambiarImagen()">
+            <option value="no-seleccionado">Seleccione...</option>
+            <option value="to">Toledo</option>
+            <option value="cr">Ciudad Real</option>
+            <option value="ab">Albacete</option>
+            <option value="cu">Cuenca</option>
+            <option value="gu">Guadalajara</option>
+        </select>
+        <br>
+        <br>
+        <img id="imagen" style="visibility: hidden;" src="" alt="" width="400" height="400">
+    </form>
+</body>
+</html>

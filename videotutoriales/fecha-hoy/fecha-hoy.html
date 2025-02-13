@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validación de formularios</title>
+
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #titulo {
+            text-align: center;
+        }
+
+        #aviso {
+            color: red;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        #capa-formulario {
+            height: 300px;
+            background-color: grey;
+            width: 80%;
+            margin: auto;
+            border-radius: 15px;
+            padding: 20px;
+        }
+
+        label{
+            color: white;
+            width: 30%;
+            display: inline-block;
+        }
+
+        input {
+            border-color: white;
+            border-radius: 4px;
+            width: 70%;
+            border: 1px solid white;
+            height: 25px;
+        }
+    </style>
+
+    <script>
+        function validarFormulario() {
+            let aviso = document.getElementById('aviso');
+            aviso.innerHTML = "";
+
+            let nombre = document.getElementById('nombre');
+            let edad = document.getElementById('edad');
+
+            if (nombre.value.length == 0) {
+                aviso.innerHTML = 'El campo nombre no puede estar vacío';
+                nombre.focus();
+                return false;
+            }
+
+            if (parseInt(edad.value) < 18) {
+                alert('Menor de edad. Acceso restringido.');
+                edad.focus();
+                return false;
+            }
+
+            let fecha = document.getElementById('fecha');
+            if(fecha.value.length == 0) {
+                aviso.innerHTML = 'Debe seleccionar una fecha';
+                fecha.focus();
+                return false;
+            }
+
+            let fechaHoy = new Date();
+            let fechaHoyStr = fechaHoy.toISOString();
+            fechaHoyStr = fechaHoyStr.slice(0, 10);
+            alert(fechaHoyStr);
+
+            if(fecha.value < fechaHoyStr) {
+                aviso.innerHTML = 'La fecha no puede ser anterior a la fecha de hoy';
+                fecha.focus();
+                return false;
+            }
+
+            alert('Datos correctos');
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h1 id="titulo">Formulario de inscripción</h1>
+
+    <div id="capa-formulario">
+        <form action="procesa.php" onsubmit="return validarFormulario()">
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" id="nombre">
+            <br>
+            <br>
+            <label for="edad">Edad:</label>
+            <input type="text" name="edad" id="edad">
+            <br>
+            <br>
+            <label for="fecha">Fecha de inscripción:</label>
+            <input type="date" name="fecha" id="fecha">
+            <br>
+            <br>
+            <div style="text-align: center;">
+                <input type="submit" value="Enviar datos" name="enviar">
+            </div>
+        </form>
+    </div>
+
+    <h6 id="aviso"></h6>
+</body>
+</html>

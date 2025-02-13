@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Múltiplo de 7</title>
+</head>
+<body>
+    <button onclick="sumaNumeros()">Suma números</button>
+
+    <button onclick="diceImpar()">Par o impar</button>
+    <script>
+        let numero1 = prompt("Ingresa un número");
+
+        if(numero1 % 7 == 0) {
+            alert("El número " + numero1 + " es múltiplo de 7");
+        } else {
+            alert("El número " + numero1 + " no es múltiplo de 7");
+        }
+
+        function sumaNumeros() {
+            let numero2 = prompt("Ingresa un segundo número");
+            let numero3 = prompt("Ingresa un tercer número");
+
+            let suma = parseInt(numero2) + parseInt(numero3);
+
+            alert("La suma de " + numero2 + " y " + numero3 + " es igual a " + suma);
+        }
+
+        function parImpar(numero) {
+            let resultado = "";
+
+            if(numero % 2 == 0) {
+                return "par";
+            } else {
+                return "impar";
+            }
+        }
+
+        function diceImpar() {
+            let numero = prompt("Ingresa un número");
+
+            let resultado = parImpar(numero);
+
+            alert("El número " + numero + " es " + resultado);
+        }
+
+    </script>
+</body>
+</html>
