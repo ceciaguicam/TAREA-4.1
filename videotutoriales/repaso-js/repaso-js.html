@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Repaso JavaScript</title>
+    <style type="text/css">
+		img {
+            width: 300px;
+            height: 200px;
+        }
+
+		.importante { 
+            color:blue; 
+            background-color: lightblue; 
+        }
+
+	</style>
+</head>
+<body>
+    <button onclick="acceso()">Pregunta edad</button>
+    <button onclick="suma()">Suma</button>
+    <button onclick="login()">Login</button>
+    <button onclick="calculaDoble()">Doble</button>
+    <button onclick="diceAlineacion()">Alineación</button>
+    <button onclick="sumaHasta()">Suma n primeros números</button>
+
+    <h1 id="titulo">Título</h1>
+    <h1 id="titulo2">Título</h1>
+    <p>Usuario:<input id="usuario" type="text" value="Ceci"></p>
+    <img id="imagen" src="images/gatos.jpg">
+
+    <br>
+    <br>
+
+    <button onclick="cambiaTitulo()">Cambia título</button>
+    <button onclick="cambiaImagen()">Cambia imagen</button>	
+    <button onclick="cambiaValor()">Cambia valor</button>
+    <button onclick="cambiaColor()">Cambia color</button>
+    <button onclick="ocultaImagen()">Oculta imagen</button>	
+    <button onclick="aplicaClase()">Aplica clase</button>
+    <button onclick="nuevoHTML()">Nuevo HTML</button>
+    <p>Idioma: 
+    <select id="idioma" onchange="cambiaIdioma()">
+        <option value="es">Español</option>
+        <option value="en">Inglés</option>
+    </select></p>
+
+    <h1>Validación de Formularios</h1>
+
+	<form action="procesa.php" method="get" onsubmit="return validaFormulario()">
+
+		<p>Nombre:
+            <input type="text" id="nombre" name="nombre" >
+        </p>
+
+		<p>Contraseña:
+		    <input type="password" id="password" name="password" >
+        </p>
+
+		<p>Edad:
+            <input type="number" id="edad" name="edad" >
+        </p>
+
+		<p>Provincia:
+            <select name="provincia" id="provincia">
+                <option value="ninguna">--Elija una--</option>
+                <option value="to">Toledo</option>
+                <option value="gu">Guadalajara</option>
+                <option value="ab">Albacete</option>
+                <option value="cu">Cuenca</option>
+                <option value="cr">Ciudad Real</option>
+		    </select>
+        </p>
+
+		<p>
+            <input type="checkbox" id="acepto" name="acepto" >Acepto las condiciones
+        </p>
+		
+        <input type="submit">
+
+	</form>
+
+    <script>
+        function acceso(){
+            let edad=prompt("dime la edad");
+            if ( edad<18 ) {
+                alert("No puedes entrar");
+            } else {
+                alert("Bienvenid@ a mi página");
+            }
+        }
+
+        function suma(){
+            let x = prompt("Dime la x");
+            let y = prompt("Dime la y");
+            let suma =  Number(x) + Number(y);
+            alert("La suma es " + suma)
+        }
+        
+        function login(){
+            let usuario = prompt("Introduzca usuario");
+            let password = prompt("Introduzca contraseña");
+            if (usuario == "admin" || password=="1234") {
+                alert("Puede acceder a la página");
+            } else {
+                alert("Acceso denegado. Credenciales no válidas");
+            }
+        }
+        
+        function doble( n ){
+                return 2*n;
+        }
+        function calculaDoble(){
+            let num=prompt("Dime un número");
+            alert("El doble de " + num + " es " + doble(num));
+        }
+
+        function diceAlineacion(){
+            let alineacion = ['Benzema','Bale','Marcelo','Sergio Ramos'];
+            let posicion = prompt("Dime una posición");
+
+            alert("En la posición " + posicion + " juega " + alineacion[posicion]);
+        }
+
+        function sumaHasta(){
+            let num=prompt("Hasta que número quieres sumar");
+            let suma=0;
+
+            for ( let i=1; i<=num; i++) {
+                suma = suma + i;
+            }
+
+            alert("La suma de los " + num + " primeros números es " + suma)
+        }
+
+        
+        function cambiaTitulo(){
+            let titulo=document.getElementById("titulo");
+            titulo.innerHTML = "Título NUEVO";
+        }
+        
+        function cambiaImagen(){
+            document.getElementById("imagen").src = "images/perros.jpg";
+        }
+
+        function cambiaValor(){
+            document.getElementById("usuario").value="admin";
+        }
+        
+        function cambiaColor(){
+            let titulo=document.getElementById("titulo");
+            titulo.style.color = "red";
+            titulo.style.backgroundColor = "yellow";
+            titulo.style.fontSize = "4em";
+            titulo.style.border = "2px solid red";
+        }
+        function ocultaImagen(){
+            document.getElementById("imagen").style.display = "none";
+        }
+        
+        function aplicaClase(){
+            let titulo=document.getElementById("titulo2");
+            titulo.className = "importante";
+        }
+        
+        function nuevoHTML(){
+            document.write("<h1>Nuevo HTML</h1>");
+        }
+        
+        function cambiaIdioma(){
+            let miSelect=document.getElementById("idioma");
+            let titulo=document.getElementById("titulo");
+
+            if ( miSelect.value=="en" ) {
+                titulo.innerHTML = "New Title";
+            } 
+            else {
+                titulo.innerHTML = "Nuevo Título";
+            }
+        }
+
+        function validaFormulario() {
+			let nombre=document.getElementById("nombre");
+			let password = document.getElementById("password");
+			let edad = document.getElementById("edad");
+			let provincia = document.getElementById("provincia");
+			let acepto = document.getElementById("acepto");
+
+			if (nombre.value==""){
+				alert("El nombre no puede estar vacio");
+				nombre.focus();
+				return false;
+			}
+
+			if (password.value.length<6){
+				alert("La contraseña debe tener al menos 6 caracteres");
+				password.focus();
+				return false;
+			}
+
+		 	if (edad.value<18){
+				alert("Debes ser mayor de 18 años");
+				return false;
+			}
+
+			if (provincia.value=="ninguna"){
+				alert("Debes elegir una provincia");
+				return false;
+			}
+
+			if (acepto.checked==false){
+				alert("Debes aceptar las condiciones");
+				return false;
+			}
+			
+			return true;
+		}
+
+    </script>
+
+</body>
+</html>

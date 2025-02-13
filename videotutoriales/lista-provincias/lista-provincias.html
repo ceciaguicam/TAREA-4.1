@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de provincias</title>
+
+    <script>
+        function mostrarProvincia() {
+            let pais = document.getElementById('pais');
+            if(pais.value == 'es') {
+                document.getElementById('provincia').style.visibility = 'visible';
+            }
+            else {
+                document.getElementById('provincia').style.visibility = 'hidden';
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Provincia de envío</h1>
+    <label for="pais">País:</label>
+    <select name="pais" id="pais" onchange="mostrarProvincia()">
+        <option value="no-seleccionado" selected>Elija un país...</option>
+        <option value="es">España</option>
+        <option value="no-es">Fuera de España</option>
+    </select>
+    <select name="provincia" id="provincia" style="visibility: hidden;">
+        <option value="to">Toledo</option>
+        <option value="cr">Ciudad Real</option>
+        <option value="cu">Cuenca</option>
+        <option value="gu">Guadalajara</option>
+        <option value="ab">Albacete</option>
+    </select>
+</body>
+</html>
